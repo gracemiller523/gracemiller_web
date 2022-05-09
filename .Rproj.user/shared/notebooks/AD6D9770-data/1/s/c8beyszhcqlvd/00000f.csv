@@ -1,0 +1,5 @@
+"0","ggplot(collegedata, aes(Alumni.Salary, Total.Annual.Cost)) + "
+"0","  stat_density_2d(aes(fill = ..level..), geom = ""polygon"") +"
+"0","  xlab(""Alumni Salary"") +"
+"0","  ylab(""Total Annual Cost"") +"
+"0","  ggtitle(""Cost vs Alumni Salary Contour Plot"")"

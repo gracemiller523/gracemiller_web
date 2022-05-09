@@ -1,0 +1,1 @@
+"0","collegedata = read.csv(""ForbesAmericasTopColleges2019 4.csv"", header = TRUE, sep = "","")"

@@ -1,0 +1,17 @@
+name: "gracemiller_web"
+title: "Grace's Website"
+description: |
+  Grace's Website
+output_dir: "docs"
+theme: theme.css
+navbar:
+  right:
+    - text: "Home"
+      href: index.html
+    - text: "Visualizations"
+      href:  about.html
+    - text: "Data Summary"
+      href:  data.html
+
+output: distill::distill_article
+

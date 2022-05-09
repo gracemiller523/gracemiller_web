@@ -1,0 +1,3 @@
+"0","collegedata$Size = cut(collegedata$Student.Population, "
+"0","breaks = c(0, 2500, 8000, 15000, 25000, max(collegedata$Student.Population)), "
+"0","labels = c(""Very Small"", ""Small"", ""Medium"", ""Big"", ""Very Big""), ordered = TRUE)"

@@ -1,0 +1,7 @@
+"0","ggplot(collegedata, aes(x = Size, fill = Public.Private)) +"
+"0","geom_bar(position = ""fill"") +"
+"0","  xlab(""Size"") +"
+"0","  ylab("" "") +"
+"0","  scale_color_brewer(palette = ""YlOrRd"") + "
+"0","  scale_fill_brewer(palette = ""YlOrRd"", name = ""Public/Private"") +"
+"0","ggtitle(""Barchart of Public vs Private Schools and Size"")"

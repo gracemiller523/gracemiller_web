@@ -1,0 +1,183 @@
+---
+title: "Data Summary"
+description: |
+ 
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# Forbes Magazine Top Colleges in America
+
+The dataset I decided to use for this project is Forbes Magazine ratings of colleges and universities in America. This dataset was published in 2019, and it measures colleges and many aspects of the colleges including the variables below to measure the college's ranking, acceptance rate, and more.
+
+
+**Variables Included**
+
+Of the variables in the Forbes Magazine Top Colleges in America Data, the variables investigated include the following:
+
+Acceptance.Rate: Percent of students accepted from those who applied
+
+Public.Private: Whether the college is a public or private institution
+
+Total.Annual.Cost: Cost of the school yearly per student
+
+Rank: School ranking (lower values are better ranked schools)
+
+Alumni.Salary: How much alumni make annually
+
+Average.Grant.Aid: Average aid given
+
+Undergraduate.Population: Amount of undergradutate students enrolled
+
+Size (created): Categorical variable created from the quantitative variable Student.Population (total students enrolled in the institution) of the size of the school (really small to really big)
+
+Rank.Fac: Categorical variable created from the quantitative variable Rank, with levels Top 100, 101-200, 201-300, 301-400, and 401+
+
+**Questions**
+
+Does the rank of a college impact the cost of the school and/or the salary of the alumni?
+
+If a college is public or private, does the cost differ?
+
+
+```{r, eval = FALSE}
+collegedata = read.csv("ForbesAmericasTopColleges2019 4.csv", header = TRUE, sep = ",")
+```
+
+```{r}
+library(ggplot2)
+library(plotly)
+library(ggcorrplot)
+```
+
+```{r}
+collegedata$Size = cut(collegedata$Student.Population, 
+breaks = c(0, 2500, 8000, 15000, 25000, max(collegedata$Student.Population)), 
+labels = c("Very Small", "Small", "Medium", "Big", "Very Big"), ordered = TRUE)
+```
+
+```{r}
+collegedata$Rank.Fac = cut(collegedata$Rank, 
+breaks = c(0, 100, 200, 300, 400, max(collegedata$Rank)), 
+labels = c("Top 100", "101-200", "201-300", "301-400", "401+"), ordered = TRUE)
+```
+
+**Plots:**
+
+**Histogram of Total Annual Cost**
+
+To begin my data summary, the following graph shows the distribution of the total annual costs of colleges. This histogram shows the count of colleges with each, to show that the average cost of college cost is around $50,000 annually.
+
+```{r message=FALSE, warning=FALSE}
+ggplot(collegedata, aes(Total.Annual.Cost)) +
+  geom_histogram(fill = "lightpink", binwidth = 5000, color = "black") +
+  xlab("Total Annual Cost") +
+  ylab("Count") +
+ggtitle("Histogram of Total Annual Cost")
+```
+
+**Size vs Total Annual Cost**
+
+Using the variable Student.Population (the quantitative value of how many students go to the school), I created a categorical variable of very small to very big schools. There was little to no correlation between the variable size and acceptance rate, which is shown in the boxplot below. There were slightly higher costs correlating with smaller schools, and there are outliers to be taken into consideration for very big schools, big schools, small and very small schools.
+
+```{r message=FALSE, warning=FALSE}
+ggplot(collegedata, aes(x = Size, y = Total.Annual.Cost)) +
+  geom_boxplot(color = "black", fill = "lavender") +
+  xlab("Size") +
+  ylab("Total Annual Cost") +
+  coord_flip() +
+  ggtitle("Size vs Total Annual Cost")
+```
+
+**Barchart of Public vs Private School and Size**
+
+Using the categorical variable size again, I created a barchart of public and private schools, As seen below, very small schools are much more likely to be private than very big schools. As the size of the schools lincrease, they are more public than private.
+
+```{r}
+ggplot(collegedata, aes(x = Size, fill = Public.Private)) +
+geom_bar(position = "fill") +
+  xlab("Size") +
+  ylab(" ") +
+  scale_color_brewer(palette = "YlOrRd") + 
+  scale_fill_brewer(palette = "YlOrRd", name = "Public/Private") +
+ggtitle("Barchart of Public vs Private Schools and Size")
+```
+
+**College Rank and Acceptance Rate**
+
+Shown below, this violin plot represents the correlation between the rankings of colleges and the acceptance rates. Using the quantitative variable Rank (college ranking value) I made 5 different values showing the top 100, 101-200, 201-300, 301-400, and finally 401+ colleges. This violin plot shows that the highest ranking schools have the lowest acceptance rate and acceptance rate increases throughout each group. The violin plot shows where the bulk of the data lies, and in the top 100 it is clear that the bulk of the data is made up of smaller data points, and therefore better ranked schools.
+
+```{r message=FALSE, warning=FALSE}
+ggplot(collegedata, aes(x = Rank.Fac, y = Acceptance.Rate, fill = Rank.Fac)) +
+  geom_violin(scale = "width", alpha = .5) +
+  geom_boxplot(width = 0.25) +
+  xlab("College Rank") +
+  ylab("Acceptance Rate") +
+  ggtitle("College Rank and Acceptance Rate") +
+scale_fill_brewer("Rank")
+```
+
+**Scatterplot of School Rank and Total Annual Cost Colored by Public and Private**
+
+Using a scatterplot to compare, the variables school ranking and total annual cost were then assessed to look for correlations. The colors are representative of which schools are either public or private schools, and it became clear that private schools tend to be much more expensive than public schools. It is also a trend that as the rankings get smaller, the price of the school is increasing steadily. When hovering over a point, the name of the college is present and therefore the observer can analyze the data while seeing the specific schools. It is important to note that there are some higher ranked schools that cost little to nothing, which are the United States Naval, Military, Air Force, Coast Guard and Merchant Marine acadamy, because the payment for these acadamies is serving for the country.
+
+```{r}
+library(plotly)
+g1 = ggplot(collegedata, aes(x = Rank, y = Total.Annual.Cost, color = Public.Private, text = paste("Name:", Name))) +
+  geom_point(alpha = 2/3, size = 2) +
+  scale_color_brewer(palette = "Paired") +
+  xlab("School Rank") +
+  ylab("Total Annual Cost") +
+  labs(color = "Public or Private") +
+  ggtitle("Scatterplot of School Rank, Total Annual Cost, and Public/Private")
+ggplotly(g1)
+```
+
+**Cost vs Alumni Salary Contour Plot**
+
+It is valuable to look at the salaries of those who graduated from the colleges as well, and therefore this contour plot analyzes the relationship between the cost of a college and the salary of alumni. This contour plot shows a trend of a slight positive correlation. Those who make the most money are generally graduates from the more expensive schools, and as we have concluded previously, the more expensive schools tend to be the higher ranking ones. 
+
+```{r message=FALSE, warning=FALSE}
+ggplot(collegedata, aes(Alumni.Salary, Total.Annual.Cost)) + 
+  stat_density_2d(aes(fill = ..level..), geom = "polygon") +
+  xlab("Alumni Salary") +
+  ylab("Total Annual Cost") +
+  ggtitle("Cost vs Alumni Salary Contour Plot")
+```
+
+**Cost of School and Aid**
+
+There is value in exploring other correlations throughout the dataset, so I decided to investigate the relationship between the cost of school and how much aid the school provides the students. Within this graph, there is a very clearly positive relationship between the variables. It makes sense that a school who requires more money will give out more money to students because they can afford to, and they have more cost to pay for.
+
+```{r message=FALSE, warning=FALSE}
+library(hexbin)
+g2 = ggplot(collegedata, aes(Average.Grant.Aid, Total.Annual.Cost)) +
+  geom_hex(bins = 30) +
+  xlab("Grant Aid") +
+  ylab("Total Annual School Cost") +
+  ggtitle("Cost of School and Aid")
+ggplotly(g2)
+```
+
+
+```{r, eval = FALSE}
+collegedatanum <- collegedata[, c("Rank", "Total.Annual.Cost", "Acceptance.Rate", "Alumni.Salary")]
+```
+
+**Correlation Plot**
+
+Finally, I comprised a correlation plot to show the extent of the correlations between the variables including Alumni.Salary, Acceptance.Rate,  Total.Annual.Cost, and finally Rank. The purple colors show negative correlations and red colors show positive correlations, with more pigmented circles having stronger correlations. My biggest takeaways from this correlation plot is that there are strong positive correlations between rank and acceptance rate, where better schools have lower acceptance rates. There is also a strong negative correlation between alumni salary and rank, so better schools tend to have alumni that make more money post graduation. Similarly, alumni salary has a negative correlation with acceptance rate because lower acceptance rates for a college lead to alumni making more money. Another correlation that is relatively strong is the negative correlation between rank and total annual cost, because better schools will tend to cost more than lower ranked schools. My final takeaways are the slightly positive correlation between alumni salary and total annual cost, and the slight negative correlation between acceptance rate and total annual cost. 
+
+
+```{r message=FALSE, warning=FALSE}
+library(ggcorrplot)
+corr <- round(cor(collegedatanum, use = "complete.obs"), 1)
+ggcorrplot(corr, method = "circle") +
+ggtitle("Correlation Plot")
+```
+
+**Conclusion**
+
+As seen in these visualizations, especially the correlation plot, it is clear there is correlations between the rank of colleges and both cost of the college and salary of the alumni. There is also correlations between public vs private schools and cost, and it is clear due to the scatterplot above that private institutions tend to be more expensive.

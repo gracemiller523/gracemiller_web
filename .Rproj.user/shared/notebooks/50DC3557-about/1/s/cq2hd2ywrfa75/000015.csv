@@ -1,0 +1,5 @@
+"0","ggplot(StudentSurvey, aes(x = Exercise, y = TV, color = Smoke, shape = Award)) +"
+"0","  geom_point(alpha = 2/3, size = 2) + "
+"0","  scale_color_brewer(palette = ""Set2"") + "
+"0","  labs(color = ""Smoking Status"", shape = ""Award Preference"") +"
+"0","ggtitle(""Exercise vs TV Watched, Award Preference and Smoking Status"")"

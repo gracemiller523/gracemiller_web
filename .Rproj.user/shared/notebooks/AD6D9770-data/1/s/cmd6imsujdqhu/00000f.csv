@@ -1,0 +1,1 @@
+"0","collegedatanum <- collegedata[, c(""Rank"", ""Total.Annual.Cost"", ""Acceptance.Rate"", ""Alumni.Salary"")]"

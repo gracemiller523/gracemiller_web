@@ -1,0 +1,8 @@
+"0","library(Lock5Data)"
+"0","library(ggside)"
+"2","Registered S3 method overwritten by 'ggside':
+  method from   
+  +.gg   ggplot2
+"
+"0","data(SleepStudy)"
+"0","attach(SleepStudy)"

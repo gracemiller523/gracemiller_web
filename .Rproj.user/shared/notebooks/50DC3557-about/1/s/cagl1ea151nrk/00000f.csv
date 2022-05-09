@@ -1,0 +1,5 @@
+"0","ggplot(StudentSurvey, aes(x = Award, y = GPA, fill = Award)) +"
+"0","  geom_violin(scale = ""width"", alpha = .5) +"
+"0","  guides(fill = ""none"") +"
+"0","  geom_dotplot(binaxis = ""y"", binwidth = .1, stackdir = ""center"", dotsize = .25) +"
+"0","  ggtitle(""Award vs GPA"")"

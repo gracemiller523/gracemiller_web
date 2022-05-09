@@ -1,0 +1,29 @@
+{
+  "articles": [
+    {
+      "path": "about.html",
+      "title": "Visualizations",
+      "description": "My visualizations from Math230 Spring 2022",
+      "author": [],
+      "contents": "\n\n\n\n",
+      "last_modified": "2022-04-15T14:29:36-04:00"
+    },
+    {
+      "path": "data.html",
+      "title": "Data Summary",
+      "description": "My Data",
+      "author": [],
+      "contents": "\n\n\n\n",
+      "last_modified": "2022-04-15T14:39:53-04:00"
+    },
+    {
+      "path": "index.html",
+      "title": "Grace Miller",
+      "description": "Data Visualization Spring 2022 Final\n",
+      "author": [],
+      "contents": "\n\n\n\n",
+      "last_modified": "2022-04-15T14:39:58-04:00"
+    }
+  ],
+  "collections": []
+}

@@ -1,0 +1,25 @@
+---
+title: "Grace Miller"
+description: |
+  Data Visualization Spring 2022 Final
+color1: "lightblue"
+color2: "lavender"
+image: "IMG_3520.png"
+angle: 110
+links: 
+ - label: Email
+   url: "mailto:gem017@bucknell.edu"
+output: "postcards::onofre"
+site: distill::distill_website
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+# Learn more about creating websites with Distill at:
+# https://rstudio.github.io/distill/website.html
+```
+
+I am in the class of 2024 Bucknell University from Syracuse, New York. I am a psychology major, and I plan to minor in anthropology. On campus, I am a member of Delta Gamma, am on the intramural and club basketball team, and a member of the acapella group called The Offbeats.
+
+

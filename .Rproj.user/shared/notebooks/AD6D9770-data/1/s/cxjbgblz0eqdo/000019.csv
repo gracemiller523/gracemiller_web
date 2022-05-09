@@ -1,0 +1,7 @@
+"0","library(hexbin)"
+"0","g2 = ggplot(collegedata, aes(Average.Grant.Aid, Total.Annual.Cost)) +"
+"0","  geom_hex(bins = 30) +"
+"0","  xlab(""Grant Aid"") +"
+"0","  ylab(""Total Annual School Cost"") +"
+"0","  ggtitle(""Cost of School and Aid"")"
+"0","ggplotly(g2)"

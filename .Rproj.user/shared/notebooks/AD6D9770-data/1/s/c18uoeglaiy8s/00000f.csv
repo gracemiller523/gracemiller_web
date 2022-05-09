@@ -1,0 +1,3 @@
+"0","collegedata$Rank.Fac = cut(collegedata$Rank, "
+"0","breaks = c(0, 100, 200, 300, 400, max(collegedata$Rank)), "
+"0","labels = c(""Top 100"", ""101-200"", ""201-300"", ""301-400"", ""401+""), ordered = TRUE)"

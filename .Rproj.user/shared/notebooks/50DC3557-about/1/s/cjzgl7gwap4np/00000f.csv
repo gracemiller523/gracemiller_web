@@ -1,0 +1,4 @@
+"0","ggplot(Cars2020, aes(x = Drive, fill = Type)) +"
+"0","  geom_bar(position = ""fill"") +"
+"0","  ylab("" "") +"
+"0","ggtitle(""Barchart of Drive vs Type"")"

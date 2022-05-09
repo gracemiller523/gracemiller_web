@@ -1,0 +1,7 @@
+"0","ggplot(collegedata, aes(x = Rank.Fac, y = Acceptance.Rate, fill = Rank.Fac)) +"
+"0","  geom_violin(scale = ""width"", alpha = .5) +"
+"0","  geom_boxplot(width = 0.25) +"
+"0","  xlab(""College Rank"") +"
+"0","  ylab(""Acceptance Rate"") +"
+"0","  ggtitle(""College Rank and Acceptance Rate"") +"
+"0","scale_fill_brewer(""Rank"")"

@@ -1,0 +1,6 @@
+"0","ggplot(collegedata, aes(x = Size, y = Total.Annual.Cost)) +"
+"0","  geom_boxplot(color = ""black"", fill = ""lavender"") +"
+"0","  xlab(""Size"") +"
+"0","  ylab(""Total Annual Cost"") +"
+"0","  coord_flip() +"
+"0","  ggtitle(""Size vs Total Annual Cost"")"
