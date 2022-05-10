@@ -1,11 +1,9 @@
 "0","data(StudentSurvey)"
+"2","Warning in data(StudentSurvey) :"
+"2"," data set ‘StudentSurvey’ not found
+"
 "0","StudentSurvey = StudentSurvey[complete.cases(StudentSurvey), ]"
 "0","StudentSurvey$Year = factor(StudentSurvey$Year, "
 "0","                          levels = c(""FirstYear"", ""Sophomore"", ""Junior"", ""Senior""),"
 "0","                          ordered = TRUE)"
 "0","attach(StudentSurvey)"
-"2","The following object is masked from SleepStudy:
-
-    GPA
-
-"

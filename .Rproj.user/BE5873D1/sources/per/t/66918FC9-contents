@@ -10,7 +10,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 # Forbes Magazine Top Colleges in America
 
-The dataset I decided to use for this project is Forbes Magazine ratings of colleges and universities in America. This dataset was published in 2019, and it measures colleges and many aspects of the colleges including the variables below to measure the college's ranking, acceptance rate, and more.
+The dataset I decided to use for this project is Forbes Magazine ratings of colleges and universities in America. This dataset was published in 2019, and it measures colleges and many aspects of the colleges including the variables below to measure the college's ranking, acceptance rate, along with many other variables from colleges all around the United States.
 
 
 **Variables Included**
@@ -31,7 +31,7 @@ Average.Grant.Aid: Average aid given
 
 Undergraduate.Population: Amount of undergradutate students enrolled
 
-Size (created): Categorical variable created from the quantitative variable Student.Population (total students enrolled in the institution) of the size of the school (really small to really big)
+Size: Categorical variable created from the quantitative variable Student.Population (total students enrolled in the institution) of the size of the school (really small to really big)
 
 Rank.Fac: Categorical variable created from the quantitative variable Rank, with levels Top 100, 101-200, 201-300, 301-400, and 401+
 
